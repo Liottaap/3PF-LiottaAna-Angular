@@ -6,16 +6,21 @@ import { AlumnosComponent } from './alumnos.component';
 import { AlumnosTableComponent } from './components/alumnos-table/alumnos-table.component';
 import {MatTableModule} from '@angular/material/table';
 
+import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
 import {ReactiveFormsModule} from '@angular/forms'
+
+
+import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AlumnosComponent,
-    AlumnosTableComponent
+    AlumnosTableComponent,
   ],
   imports: [
     CommonModule,
@@ -25,8 +30,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    FormsModule,
   ],
-  exports: [AlumnosComponent]
+  exports: [AlumnosComponent],
 })
 export class AlumnosModule { }

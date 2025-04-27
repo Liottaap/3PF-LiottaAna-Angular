@@ -41,4 +41,5 @@ export class AlumnosTableComponent {
         return '';
     }
   } 
+
 }
