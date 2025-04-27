@@ -30,6 +30,7 @@ export class AlumnosComponent {
     this.alumnForm = this.fb.group({
       nombre: [''],
       apellido: [''],
+      estado: ['']
     });
   }
 

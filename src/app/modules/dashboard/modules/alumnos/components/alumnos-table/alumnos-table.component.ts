@@ -28,4 +28,17 @@ export class AlumnosTableComponent {
 
   @Output()
   editAlumn = new EventEmitter<AlumnosList>()
+
+
+
+  StateBgColor(estado: string): string {
+    switch (estado) {
+      case 'Aprobado':
+        return 'bg-success';
+      case 'Desaprobado':
+        return 'bg-danger';
+      default:
+        return '';
+    }
+  } 
 }
