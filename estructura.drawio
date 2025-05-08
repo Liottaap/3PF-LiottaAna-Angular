@@ -1,0 +1,95 @@
+<mxfile host="65bd71144e">
+    <diagram id="UHG1oVkcOSEuwmaHmEMr" name="Page-1">
+        <mxGraphModel dx="1640" dy="357" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="App" style="rounded=1;whiteSpace=wrap;html=1;arcSize=0;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="320" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Dashboard" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="210" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" style="edgeStyle=none;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Auth" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="500" y="220" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="endArrow=classic;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="4">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="370" y="320" as="sourcePoint"/>
+                        <mxPoint x="410" y="260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" style="edgeStyle=none;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.906;entryY=1.078;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Alumnos" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-20" y="100" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Cursos" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="100" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Login" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="100" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Register" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="580" y="100" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Inscripciones" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="100" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" style="edgeStyle=none;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.667;entryY=1.067;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="3" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="10">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="190" y="170" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" style="edgeStyle=none;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.339;entryY=1.011;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="3" target="13">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" style="edgeStyle=none;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.378;entryY=1.044;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="4" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <UserObject label="/auth" placeholders="1" name="Variable" id="19">
+                    <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="1">
+                        <mxGeometry x="520" y="290" width="80" height="20" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="/dashboard" placeholders="1" name="Variable" id="20">
+                    <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="1">
+                        <mxGeometry x="130" y="280" width="80" height="20" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="/auth/login" placeholders="1" name="Variable" id="21">
+                    <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="1">
+                        <mxGeometry x="440" y="80" width="80" height="20" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="/auth/register" placeholders="1" name="Variable" id="22">
+                    <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="1">
+                        <mxGeometry x="590" y="80" width="80" height="20" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="/dashboard/inscripciones" placeholders="1" name="Variable" id="23">
+                    <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="1">
+                        <mxGeometry x="250" y="80" width="140" height="20" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="/dashboard/cursos" placeholders="1" name="Variable" id="24">
+                    <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="1">
+                        <mxGeometry x="110" y="80" width="140" height="20" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="/dashboard/alumnos" placeholders="1" name="Variable" id="25">
+                    <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="1">
+                        <mxGeometry x="-30" y="80" width="140" height="20" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

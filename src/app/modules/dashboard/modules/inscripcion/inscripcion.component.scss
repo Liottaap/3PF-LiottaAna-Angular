@@ -1,0 +1,56 @@
+.formgrid {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fafafa;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .formgrid h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #3f51b5;
+  }
+  
+  .formInputDiv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .formNombre, .formInputDiv mat-form-field {
+    flex: 1 1 250px;
+    min-width: 200px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-form-field div {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  mat-form-field input {
+    width: 100%;
+    height: 30px;
+  }
+
+  button{
+    width: 100px;
+  }
+
+  .telInput{
+    display: flex;
+    gap: 10px;
+  }
+  .form-group{
+    display: flex;
+    flex-direction: column;
+  }

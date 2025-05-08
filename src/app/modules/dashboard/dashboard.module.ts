@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; // 👈 ¡IMPORTANTE!
+
 import { DashboardComponent } from './dashboard.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
@@ -8,9 +10,11 @@ import {MatIconModule} from '@angular/material/icon';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import {MatListModule} from '@angular/material/list';
 import { AlumnosModule } from "./modules/alumnos/alumnos.module";
-
+import { CursosComponent } from './modules/cursos/cursos.component';
+import { InscripcionComponent } from './modules/inscripcion/inscripcion.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 @NgModule({
-  declarations: [DashboardComponent, NavMenuComponent],
+  declarations: [DashboardComponent, NavMenuComponent ],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -18,7 +22,9 @@ import { AlumnosModule } from "./modules/alumnos/alumnos.module";
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    AlumnosModule
+    AlumnosModule,
+    RouterModule,
+    DashboardRoutingModule
 ],
   exports: [DashboardComponent]
 })

@@ -14,7 +14,6 @@ import {ReactiveFormsModule} from '@angular/forms'
 
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
