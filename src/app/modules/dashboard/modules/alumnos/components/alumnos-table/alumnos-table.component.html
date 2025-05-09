@@ -1,30 +1,31 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <!-- Position Column -->
+    
+  
+  <!-- Posición  -->
     <ng-container matColumnDef="demo-position">
       <th mat-header-cell *matHeaderCellDef> No. </th>
       <td mat-cell *matCellDef="let element"> {{element.position}} </td>
     </ng-container>
-  
-    <!-- Name Column -->
+
+    <!-- Nombre -->
     <ng-container matColumnDef="demo-nombre">
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
       <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
     </ng-container>
-  
-    <!-- Weight Column -->
+
+    <!-- Apellido  -->
     <ng-container matColumnDef="demo-apellido">
       <th mat-header-cell *matHeaderCellDef> Apellido </th>
       <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
     </ng-container>
-  
-    <!-- Symbol Column -->
+
+    <!-- Estado  -->
     <ng-container matColumnDef="demo-estado">
       <th mat-header-cell *matHeaderCellDef> Estado </th>
       <td mat-cell *matCellDef="let element"
       [ngClass]="StateBgColor(element.estado)"
       > {{element.estado}} </td>
     </ng-container>
-
 
 
     <ng-container matColumnDef="actions">

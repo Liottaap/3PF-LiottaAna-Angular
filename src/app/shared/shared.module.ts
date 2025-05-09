@@ -8,8 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatRadioModule } from '@angular/material/radio';
-
-
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
 @NgModule({
   declarations: [],
   imports: [
@@ -21,7 +21,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSelectModule,
     MatButtonModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCardModule,
+    MatChipsModule
   ],
   exports: [
     MatFormFieldModule,
@@ -31,7 +33,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSelectModule,
     MatButtonModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCardModule,
+    MatChipsModule
   ]
 })
 export class SharedModule { }
