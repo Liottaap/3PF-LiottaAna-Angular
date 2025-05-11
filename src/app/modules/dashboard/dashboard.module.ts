@@ -10,11 +10,10 @@ import {MatIconModule} from '@angular/material/icon';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import {MatListModule} from '@angular/material/list';
 import { AlumnosModule } from "./modules/alumnos/alumnos.module";
-import { CursosComponent } from './modules/cursos/cursos.component';
-import { InscripcionComponent } from './modules/inscripcion/inscripcion.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 @NgModule({
-  declarations: [DashboardComponent, NavMenuComponent ],
+  declarations: [DashboardComponent, NavMenuComponent, DashboardHomeComponent ],
   imports: [
     CommonModule,
     MatSidenavModule,

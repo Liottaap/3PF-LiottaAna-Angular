@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: DashboardComponent
+    ,
     children: [
+      {
+        path: '',
+        component: DashboardHomeComponent,
+      },
       {
         path: 'cursos',
         loadChildren: () =>
@@ -19,10 +25,9 @@ const routes: Routes = [
           import('./modules/inscripcion/inscripcion.module').then(
             (m) => m.InscripcionModule
           ),
-      },
-      { path: '', redirectTo: 'cursos', pathMatch: 'full' },
-    ],
-  },
+      }
+    ]
+  }
 ];
 
 @NgModule({
