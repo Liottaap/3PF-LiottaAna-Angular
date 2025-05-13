@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatCardModule} from '@angular/material/card';
+import { MatCard, MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import { CursosCardComponent } from '../modules/dashboard/modules/cursos/components/cursos-card/cursos-card.component';
 @NgModule({
@@ -36,6 +36,8 @@ import { CursosCardComponent } from '../modules/dashboard/modules/cursos/compone
     MatButtonModule,
     FormsModule,
     MatRadioModule,
+    MatCardModule,
+    MatTableModule,
 
     MatChipsModule,
   ]

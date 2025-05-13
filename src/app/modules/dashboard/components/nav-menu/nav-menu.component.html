@@ -1,7 +1,6 @@
 <mat-nav-list aria-label="Select a folder">
-    <a mat-list-item routerLink="dashboard" >Inicio</a>
-    <a mat-list-item routerLink="dashboard" >Estudiantes</a>
+    <a mat-list-item routerLink="/dashboard" >Estudiantes</a>
     <a mat-list-item routerLink="/dashboard/cursos" >Cursos</a>
     <a mat-list-item routerLink="/dashboard/inscripcion" >Inscripción</a>
-    <a mat-list-item href="..." >Cerrar Sesion</a>
+    <a mat-list-item (click)="logout()">Cerrar Sesion</a>
   </mat-nav-list>

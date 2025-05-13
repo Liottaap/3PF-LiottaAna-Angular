@@ -7,12 +7,11 @@ import { DashboardHomeComponent } from './components/dashboard-home/dashboard-ho
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
-    ,
+    
     children: [
       {
-        path: '',
-        component: DashboardHomeComponent,
+        path: 'alumnos',
+        loadChildren: () => import('./modules/alumnos/alumnos.module').then(m => m.AlumnosModule)
       },
       {
         path: 'cursos',
