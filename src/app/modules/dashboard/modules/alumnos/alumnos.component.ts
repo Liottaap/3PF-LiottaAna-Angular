@@ -1,63 +1,96 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AlumnosList } from './components/alumnos-table/alumnos-table.component';
+import { AlumnosService } from './alumnos.service';
+
+
+export interface Alumnos {
+  position: number;
+  nombre: string;
+  apellido: string;
+  estado: string;
+}
 
 @Component({
   selector: 'app-alumnos',
   standalone: false,
   templateUrl: './alumnos.component.html',
-  styleUrls: ['./alumnos.component.scss'] // ¡Ojo! debe ser styleUrls (plural)
+  styleUrls: ['./alumnos.component.scss']
 })
-export class AlumnosComponent {
+export class AlumnosComponent implements OnInit {
 
   isEditingId: number | null = null;
   alumnForm: FormGroup;
+  isLoading = false
+  alumnos: Alumnos[] = [];
 
-  alumnos: AlumnosList[] = [
-    {position: 1, nombre: 'Rosario', apellido: "Pérez" , estado: 'Aprobado'},
-    {position: 2, nombre: 'Joaquin', apellido: "Rivadavia", estado: 'Desaprobado'},
-    {position: 3, nombre: 'Pedro', apellido: "Maradona", estado: 'Desaprobado'},
-    {position: 4, nombre: 'Mateo', apellido:"Ahumada" , estado: 'Desaprobado'},
-    {position: 5, nombre: 'Milagros', apellido: "Gil", estado: 'Aprobado'},
-    {position: 6, nombre: 'Francisco', apellido: "Sabatini", estado: 'Aprobado'},
-    {position: 7, nombre: 'Justo', apellido: "Rossomando", estado: 'Aprobado'},
-    {position: 8, nombre: 'Ana', apellido: "Liotta", estado: 'Aprobado'},
+  constructor(private fb: FormBuilder,private alumnosService: AlumnosService) {
+    this.loadAlumnsObservable()
 
-  ];
-
-  constructor(private fb: FormBuilder) {
-    // Corregimos el uso de this.fb.group
+    
     this.alumnForm = this.fb.group({
       nombre: [''],
       apellido: [''],
       estado: ['']
     });
   }
+  loadAlumnsObservable () {
+    this.isLoading = true;
+    this.alumnosService
+      .getAlumns$()
+      .subscribe({
+        next: (datos) =>{console.log(datos);},
+        error: (error) => console.log(error),
+        complete: () => {this.isLoading = false}
+        
+      })
+  }
 
-  // Esta función debe estar fuera del constructor
+  loadAlumns() {
+    this.isLoading = true;
+    this.alumnosService
+      .getAlumns()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => 
+        console.error(error)
+      )
+      .finally(() => {
+        this.isLoading = false;
+      });
+
+  }
+
+  ngOnInit(): void {
+    this.alumnosService.getAlumns$().subscribe((alumnos) => {
+      this.alumnos = alumnos;
+    });
+  }
+
   onSubmit() {
-    if(this.isEditingId) {
-      this.alumnos = this.alumnos.map((al) => al.position === this.isEditingId ? {...al, ...this.alumnForm.value} : al)
-    }else{
-      const newAlumn =this.alumnForm.value
-      newAlumn.position = this.alumnos.length + 1
-
-      this.alumnos = [...this.alumnos, this.alumnForm.value]
-      console.log(this.alumnos);
+    if (this.isEditingId) {
+      this.alumnos = this.alumnos.map((al) =>
+        al.position === this.isEditingId ? { ...al, ...this.alumnForm.value } : al
+      );
+    } else {
+      const newAlumn = {
+        ...this.alumnForm.value,
+        position: this.alumnos.length + 1
+      };
+      this.alumnos = [...this.alumnos, newAlumn];
     }
     this.alumnForm.reset();
     this.isEditingId = null;
   }
 
-  onDeleteAlumn(position:number){
-    console.log('Se va a eliminar el producto con position:', position);
-    if(confirm('Estas seguro que quieres eliminar el Alumno?'))
-    this.alumnos = this.alumnos.filter((alumno) => alumno.position != position )
+  onDeleteAlumn(position: number) {
+    if (confirm('¿Estas seguro que quieres eliminar el Alumno?')) {
+      this.alumnos = this.alumnos.filter((alumno) => alumno.position != position);
+    }
   }
 
-  onEditAlumn(alumno: AlumnosList){
-    this.isEditingId = alumno.position
-    console.log('Se va a editar datos del alumno:', alumno )
-    this.alumnForm.patchValue(alumno)
+  onEditAlumn(alumno: Alumnos) {
+    this.isEditingId = alumno.position;
+    this.alumnForm.patchValue(alumno);
   }
 }
