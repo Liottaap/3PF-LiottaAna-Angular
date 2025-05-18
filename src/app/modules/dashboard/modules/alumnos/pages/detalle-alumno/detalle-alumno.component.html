@@ -1,1 +1,22 @@
-<p>detalle-alumno works!</p>
+
+@if (!(Alumn$ | async)){
+    <p>Alumno no encontrado</p>
+}@else{
+    <div class="nombre-alumno">
+        <h1>{{ (Alumn$ | async)?.nombre}}, {{(Alumn$ | async)?.apellido}}</h1>
+        <h2>Estado de cursada: {{(Alumn$ | async)?.estado}}</h2>
+        <div>
+            <h3>Cursos actuales:</h3>
+            <ul>
+                <li>Curso de Angular</li>
+                <li>Curso de Backend I</li>
+                <li>Curso de Figma</li>
+            </ul>
+        </div>
+        
+    </div>
+
+    
+}
+
+

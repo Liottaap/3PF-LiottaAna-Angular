@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Alumnos } from './alumnos.component';
+import { map } from 'rxjs/operators';
 
-const ALUMNOS_DB: Alumnos[] = [
+const MY_ALUMNOS_DB: Alumnos[] = [
     {position: 1, nombre: 'Rosario', apellido: "Pérez" , estado: 'Aprobado'},
     {position: 2, nombre: 'Joaquin', apellido: "Rivadavia", estado: 'Desaprobado'},
     {position: 3, nombre: 'Pedro', apellido: "Maradona", estado: 'Desaprobado'},
@@ -21,12 +22,24 @@ export class AlumnosService {
   private cursos: Alumnos[] = []
   constructor() { }
 
+  getAlumnByPosition(position: number): Observable<Alumnos | null> {
+    return of([...MY_ALUMNOS_DB]).pipe(
+      map((alumn) => {
+        console.log('Buscando alumno con posición:', position);
+        const resultado = alumn.find((a) => a.position == position) || null;
+        console.log('Resultado:', resultado);
+        return resultado;
+      })
+    );
+  }
+
+
   getAlumns(): Promise<Alumnos[]>{
     console.log('Fetching products...')
 
     const alumnsPromise = new Promise<Alumnos[]>((res,rej)=>{
       setTimeout(() => {
-        res(ALUMNOS_DB)
+        res(MY_ALUMNOS_DB)
       }, 2000);
     });
     
@@ -34,9 +47,10 @@ export class AlumnosService {
   };
 
   getAlumns$(): Observable<Alumnos[]>{
-    const alumnsObservable = new Observable<Alumnos[]>((observer) => {
+
+     const alumnsObservable = new Observable<Alumnos[]>((observer) => {
       setTimeout(() => {
-        observer.next(ALUMNOS_DB)
+        observer.next(MY_ALUMNOS_DB)
         observer.complete()
       }, 2000);
     })
