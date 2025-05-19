@@ -1,0 +1,22 @@
+{
+    "students": [],
+    "courses": [],
+    "users": [
+        {
+            "id": 1,
+            "nombre": "Juan Gomez",
+            "email": "juangomez@example.com",
+            "password": "123456789",
+            "role": "admin",
+            "token": "fake-token"
+        },
+        {
+            "id": 2,
+            "nombre": "Maria Gimenez",
+            "email": "mariaJ@example.com",
+            "password": "123456789",
+            "role": "Profesor",
+            "token": "fake-token-2"
+        }
+    ]
+}

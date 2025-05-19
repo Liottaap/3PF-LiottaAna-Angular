@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AlumnosService } from './alumnos.service';
+import { AuthService } from '../../../../core/services/auth.services';
+import { User } from '../../../../core/models';
+import { Observable } from 'rxjs';
 
 
 export interface Alumnos {
@@ -23,7 +26,14 @@ export class AlumnosComponent implements OnInit {
   isLoading = false
   alumnos: Alumnos[] = [];
 
-  constructor(private fb: FormBuilder,private alumnosService: AlumnosService) {
+
+  authUser$: Observable<User | null>
+  constructor(
+    private fb: FormBuilder,
+    private alumnosService: AlumnosService,
+    private authService :AuthService
+  ) {
+    this.authUser$ = this.authService.authUser$
     this.loadAlumnsObservable()
 
     

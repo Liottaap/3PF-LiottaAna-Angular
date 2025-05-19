@@ -34,10 +34,16 @@
         <button [routerLink]="[element.position]" mat-icon-button>
           <mat-icon>visibility</mat-icon>
         </button>
-        <button (click)="editAlumn.emit(element)" mat-icon-button>
+        <button 
+          [disabled]="(authUser$|async)?.role != 'admin'"
+          (click)="editAlumn.emit(element)" 
+          mat-icon-button>
           <mat-icon>edit</mat-icon>
         </button>
-        <button (click)="deleteAlumn.emit(element.position)" mat-icon-button>
+        <button           
+          [disabled]="(authUser$|async)?.role != 'admin'"
+          (click)="deleteAlumn.emit(element.position)" 
+          mat-icon-button>
           <mat-icon>delete</mat-icon>
         </button>
       </td>

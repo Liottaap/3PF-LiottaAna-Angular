@@ -1,7 +1,9 @@
 
 
   <mat-toolbar>
-    <button 
+    <div class="d-flex align-items-center justify-content-between w-100">
+      <div>
+        <button 
         (click)="drawer.toggle()"
         mat-icon-button 
         class="example-icon" 
@@ -9,6 +11,10 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>Interfaz</span>
+      </div>
+      <div *ngIf="authUser$ | async; let user">Hola, {{user.nombre}}</div>
+    </div>
+
 
   </mat-toolbar>
 

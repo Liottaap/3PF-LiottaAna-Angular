@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../core/services/auth.services';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +10,31 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  loginForm: FormGroup
 
-  constructor(private router: Router){}
-  login(){
-    console.log('login')
-    localStorage.setItem('token','123456789');
-    this.router.navigate(['dashboard']);
+  constructor(private router: Router, private authService: AuthService, private fb: FormBuilder){
+    this.loginForm = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required]
+    })
   }
-}
+
+  login(){
+    if(this.loginForm.invalid){
+      alert('Por favor, rellene el formulario')
+    }else{
+      const {email, password} = this.loginForm.value;
+      const user = this.authService.login(email,password)
+      if(user) {
+        this.router.navigate(['/dashboard'])
+      }else{
+        alert('Datos inválidos, pruebe nuevamente.')
+      }
+    }
+  }
+
+
+  }
+
 
 

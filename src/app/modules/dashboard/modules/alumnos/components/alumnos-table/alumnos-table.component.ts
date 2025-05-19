@@ -1,6 +1,9 @@
 import {EventEmitter, Input, Output } from '@angular/core'
 
 import { Component } from '@angular/core';
+import { AuthService } from '../../../../../../core/services/auth.services';
+import { Observable } from 'rxjs';
+import { User } from '../../../../../../core/models';
 export interface AlumnosList {
   nombre: string;
   position: number;
@@ -29,6 +32,12 @@ export class AlumnosTableComponent {
   @Output()
   editAlumn = new EventEmitter<AlumnosList>()
 
+  
+  authUser$: Observable<User | null>
+
+  constructor(private authService: AuthService){
+    this.authUser$ = this.authService.authUser$
+  }
 
 
   StateBgColor(estado: string): string {
