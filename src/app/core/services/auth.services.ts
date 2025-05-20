@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { User } from "../models";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, map, Observable } from "rxjs";
+import { BehaviorSubject, map, Observable, of } from "rxjs";
 import { Router } from "@angular/router";
 
 
@@ -17,24 +17,22 @@ export class AuthService{
         private http:HttpClient,
         private router:Router
     ){}
-    login(email: string, password: string) : void | boolean {
-        this.http
-        .get<User[]>(`http://localhost:3000/users?email=${email}&password=${password}`)
-        .subscribe({
-            next: (response) => {
-                const user = response[0]
-                if(user){
-                    localStorage.setItem('token', user.token);
-                    this.router.navigate(['/dashboard]'])
-                    console.log('User:', user)
-                    this._authUser$.next(user)
-                }else{
-                    alert('Usuario Inválido')
+    login(email: string, password: string): Observable<boolean> {
+        return this.http
+            .get<User[]>(`http://localhost:3000/users?email=${email}&password=${password}`)
+            .pipe(
+                map((response) => {
+                const user = response[0];
+                if (user) {
+                localStorage.setItem('token', user.token);
+                this._authUser$.next(user);
+                return true;
+                } else {
+                    return false;
                 }
-            }
-        })
-
-    } 
+            })
+        );
+    }
 
     logout():void{
         localStorage.removeItem('token')
@@ -44,10 +42,10 @@ export class AuthService{
 
     verifyToken(): Observable<User | boolean>{
         const storedToken = localStorage.getItem('token');
-        this._authUser$.next(null)
+        if(!storedToken) return of (false)
 
         return this.http.get<User[]>(`http://localhost:3000/users?token=${storedToken}`)
-        .pipe(
+            .pipe(
             map((response) => {
                 const user = response[0];
                 if(user) {

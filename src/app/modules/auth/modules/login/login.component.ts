@@ -19,20 +19,20 @@ export class LoginComponent {
     })
   }
 
-  login(){
-    if(this.loginForm.invalid){
-      alert('Por favor, rellene el formulario')
-    }else{
-      const {email, password} = this.loginForm.value;
-      const user = this.authService.login(email,password)
-      if(user) {
-        this.router.navigate(['/dashboard'])
-      }else{
-        alert('Datos inválidos, pruebe nuevamente.')
-      }
+  login() {
+    if (this.loginForm.invalid) {
+      alert('Por favor, rellene el formulario');
+    } else {
+      const { email, password } = this.loginForm.value;
+      this.authService.login(email, password).subscribe((success) => {
+        if (success) {
+          this.router.navigate(['/dashboard']);
+        } else {
+          alert('Datos inválidos, pruebe nuevamente.');
+        }
+      });
     }
   }
-
 
   }
 

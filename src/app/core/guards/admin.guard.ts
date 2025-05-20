@@ -8,7 +8,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
 
   return authService.authUser$.pipe(
     map((user) => {
-      if(user && user.role === 'admim'){
+      if(user && user.role === 'admin'){
         return true
       }else{
         alert('No tienes permiso para estar aquí')
