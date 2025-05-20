@@ -7,6 +7,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { appReducer } from './store';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,
     DashboardModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot(appReducer, {})
   ],
   providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent]

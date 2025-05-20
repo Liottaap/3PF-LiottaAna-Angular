@@ -1,16 +1,22 @@
 .curso-card {
-    margin: 1rem;
+    margin: 1rem 0;
     padding: 1rem;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
   
     &:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
-  
+  .curso-card-component{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
     mat-card-title {
       font-size: 1.5rem;
       font-weight: bold;
@@ -24,6 +30,8 @@
       margin-bottom: 1rem;
       display: block;
     }
+
+
   
     mat-card-content p {
       font-size: 1rem;
@@ -43,4 +51,25 @@
         font-size: 0.95rem;
       }
     }
+  }
+
+  .cursos-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .curso-info{
+    flex: 1;
+  }
+
+  .curso-botones{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .curso-card-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
