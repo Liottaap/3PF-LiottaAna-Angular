@@ -36,8 +36,10 @@ export class AuthService{
 
     } 
 
-    logout(){
+    logout():void{
         localStorage.removeItem('token')
+        this ._authUser$.next(null);
+        this.router.navigate([ '/login' ])
     }
 
     verifyToken(): Observable<User | boolean>{

@@ -11,9 +11,8 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import {MatListModule} from '@angular/material/list';
 import { AlumnosModule } from "./modules/alumnos/alumnos.module";
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 @NgModule({
-  declarations: [DashboardComponent, NavMenuComponent, DashboardHomeComponent ],
+  declarations: [DashboardComponent, NavMenuComponent ],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -23,7 +22,8 @@ import { DashboardHomeComponent } from './components/dashboard-home/dashboard-ho
     MatListModule,
     AlumnosModule,
     RouterModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+
 ],
   exports: [DashboardComponent]
 })
