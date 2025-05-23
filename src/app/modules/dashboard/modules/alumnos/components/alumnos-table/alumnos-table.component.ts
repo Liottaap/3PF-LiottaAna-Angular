@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../../../../core/services/auth.services';
 import { Observable } from 'rxjs';
 import { User } from '../../../../../../core/models';
+
 export interface AlumnosList {
   nombre: string;
   position: number;
@@ -50,5 +51,9 @@ export class AlumnosTableComponent {
         return '';
     }
   } 
+
+  onEdit(alumno: AlumnosList): void {
+    this.editAlumn.emit(alumno);
+}
 
 }

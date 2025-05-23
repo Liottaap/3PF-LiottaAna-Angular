@@ -3,5 +3,4 @@ export interface Curso {
     nombre: string;
     descripcion: string;
     duracion: string;
-    imagen: string;
   }

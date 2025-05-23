@@ -36,7 +36,7 @@
         </button>
         <button 
           [disabled]="(authUser$|async)?.role != 'admin'"
-          (click)="editAlumn.emit(element)" 
+          (click)="onEdit(element)" 
           mat-icon-button>
           <mat-icon>edit</mat-icon>
         </button>

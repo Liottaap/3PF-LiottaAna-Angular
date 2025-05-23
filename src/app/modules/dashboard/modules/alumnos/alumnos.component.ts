@@ -4,6 +4,9 @@ import { AlumnosService } from './alumnos.service';
 import { AuthService } from '../../../../core/services/auth.services';
 import { User } from '../../../../core/models';
 import { Observable } from 'rxjs';
+import { CursosService } from '../cursos/cursos.service';
+import { Curso } from '../cursos/cursos.component';
+import { AlumnosList } from './components/alumnos-table/alumnos-table.component';
 
 
 export interface Alumnos {
@@ -11,6 +14,7 @@ export interface Alumnos {
   nombre: string;
   apellido: string;
   estado: string;
+  cursos: []
 }
 
 @Component({
@@ -20,7 +24,7 @@ export interface Alumnos {
   styleUrls: ['./alumnos.component.scss']
 })
 export class AlumnosComponent implements OnInit {
-
+  cursosDisponibles: Curso[] = [];
   isEditingId: number | null = null;
   alumnForm: FormGroup;
   isLoading = false
@@ -28,69 +32,74 @@ export class AlumnosComponent implements OnInit {
 
 
   authUser$: Observable<User | null>
+
   constructor(
     private fb: FormBuilder,
     private alumnosService: AlumnosService,
-    private authService :AuthService
+    private authService :AuthService,
+    private cursosService: CursosService
   ) {
     this.authUser$ = this.authService.authUser$
-    this.loadAlumnsObservable()
-
     
     this.alumnForm = this.fb.group({
       nombre: [''],
       apellido: [''],
-      estado: ['']
+      curso: [''],
+      email: [''],
+      telefono: ['']
     });
-  }
-  loadAlumnsObservable () {
-    this.isLoading = true;
-    this.alumnosService
-      .getAlumns$()
-      .subscribe({
-        next: (datos) =>{console.log(datos);},
-        error: (error) => console.log(error),
-        complete: () => {this.isLoading = false}
-        
-      })
-  }
-
-  loadAlumns() {
-    this.isLoading = true;
-    this.alumnosService
-      .getAlumns()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => 
-        console.error(error)
-      )
-      .finally(() => {
-        this.isLoading = false;
-      });
-
   }
 
   ngOnInit(): void {
-    this.alumnosService.getAlumns$().subscribe((alumnos) => {
-      this.alumnos = alumnos;
+    this.fetchAlumnos()
+    this.fetchCursos()
+  }
+  fetchAlumnos() {
+    this.isLoading = true;
+    this.alumnosService.getAlumns$().subscribe({
+      next: (data) => {
+        this.alumnos = data;
+      },
+      error: (err) => console.error('Error al cargar alumnos:', err),
+      complete: () => {
+        this.isLoading = false;
+      }
+    });
+  }
+
+  fetchCursos() {
+    this.cursosService.getCursos().subscribe({
+      next: (data) => {
+        this.cursosDisponibles = data;
+      },
+      error: (err) => console.error('Error al cargar cursos:', err)
     });
   }
 
   onSubmit() {
+    const formData = this.alumnForm.value;
+
     if (this.isEditingId) {
-      this.alumnos = this.alumnos.map((al) =>
-        al.position === this.isEditingId ? { ...al, ...this.alumnForm.value } : al
-      );
+      // Editar alumno existente
+      this.alumnosService.updateAlumno(this.isEditingId, {
+        ...formData,
+        id: this.isEditingId,
+        cursos: []
+      }).subscribe(() => {
+        this.fetchAlumnos();
+        this.alumnForm.reset();
+        this.isEditingId = null;
+      });
     } else {
-      const newAlumn = {
-        ...this.alumnForm.value,
-        position: this.alumnos.length + 1
-      };
-      this.alumnos = [...this.alumnos, newAlumn];
+      // Crear nuevo alumno
+      this.alumnosService.createAlumno({
+        ...formData,
+        cursos: []
+      } as Alumnos).subscribe(() => {
+        this.fetchAlumnos();
+        this.alumnForm.reset();
+      });
     }
-    this.alumnForm.reset();
-    this.isEditingId = null;
   }
 
   onDeleteAlumn(position: number) {
@@ -99,7 +108,7 @@ export class AlumnosComponent implements OnInit {
     }
   }
 
-  onEditAlumn(alumno: Alumnos) {
+  onEditAlumn(alumno: AlumnosList) {
     this.isEditingId = alumno.position;
     this.alumnForm.patchValue(alumno);
   }

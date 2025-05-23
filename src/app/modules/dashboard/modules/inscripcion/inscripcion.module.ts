@@ -6,12 +6,14 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
+
 @NgModule({
   declarations: [InscripcionComponent],
   imports: [
     CommonModule,
     InscripcionRouting,
-    SharedModule
+    SharedModule,
+
   ]
 })
 export class InscripcionModule { }
