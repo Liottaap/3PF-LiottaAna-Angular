@@ -1,28 +1,53 @@
-Cursos Actuales: {{ count$ | async }}
-
 <mat-card class="curso-card">
-  <div class="curso-card-content">
-    <div class="curso-info">
-      <mat-card-title>{{ curso.nombre }}</mat-card-title>
-      <mat-card-subtitle>{{ curso.duracion }}</mat-card-subtitle>
-      <mat-card-content>
-        <p>{{ curso.descripcion }}</p>
-      </mat-card-content>
-    </div>
+  <div *ngIf="!editMode; else editForm">
+    <div class="curso-card-content">
+      <div class="curso-info">
+        <mat-card-title>{{ curso.nombre }}</mat-card-title>
+        <mat-card-subtitle>{{ curso.duracion }}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{ curso.descripcion }}</p>
+        </mat-card-content>
+      </div>
 
-    <div class="curso-botones">
-      <button mat-icon-button color="primary" (click)="incrementarContador()">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button color="primary" (click)="incrementarContador()">
-        <mat-icon>delete</mat-icon>
-      </button>
-      <button mat-icon-button color="primary" (click)="incrementarContador()">
-        <mat-icon>add</mat-icon>
-      </button>
-      <button mat-icon-button color="warn" (click)="decrementarContador()">
-        <mat-icon>remove</mat-icon>
-      </button>
+      <div class="curso-botones">
+        <button mat-icon-button color="primary" (click)="toggleEdit()">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="borrarCurso()">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" (click)="incrementarContador()">
+          <mat-icon>add</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="decrementarContador()">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
+
+  <ng-template #editForm>
+    <form [formGroup]="cursoForm" (ngSubmit)="guardarCambios()">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Duración</mat-label>
+        <input matInput formControlName="duracion" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="descripcion"></textarea>
+      </mat-form-field>
+
+      <button mat-button type="submit" [disabled]="cursoForm.invalid">Guardar</button>
+      <button mat-button type="button" (click)="toggleEdit()">Cancelar</button>
+    </form>
+  </ng-template>
 </mat-card>

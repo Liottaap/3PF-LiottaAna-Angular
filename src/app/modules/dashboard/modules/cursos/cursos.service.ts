@@ -14,4 +14,7 @@ export class CursosService {
     return this.http.get<Curso[]>(this.baseUrl)
   }
   
+  updateCurso(id:number, curso:Curso[]){
+    return this.http.get<Curso[]>(`${this.baseUrl}/`)
+  }
 }
