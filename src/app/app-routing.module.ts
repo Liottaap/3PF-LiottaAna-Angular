@@ -5,6 +5,11 @@ import { authenticationGuard } from './core/guards/authentication.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [authenticationGuard],

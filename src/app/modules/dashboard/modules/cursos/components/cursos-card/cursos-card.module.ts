@@ -24,7 +24,9 @@ import { CursosCardComponent } from './cursos-card.component';
     MatIconModule,
     MatCardModule,
     ReactiveFormsModule,
-
+  ],
+  exports: [
+    CursosCardComponent
   ]
 })
 export class CursosCardModule { }

@@ -16,8 +16,6 @@ import { AlumnosComponent } from '../alumnos/alumnos.component';
     CursosRoutingModule,
     SharedModule,
     MatCardModule,
-
-
     MatCardModule
   ],
 })
