@@ -14,19 +14,19 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('Debe xcrear la app', () => {
+  it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`Debe renderizar Proyecto Final'`, () => {
+  it(`should have as title 'clase-4'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Proyecto Final');
+    expect(app.title).toEqual('clase-4');
   });
 
-  it('Debe renderizar el titulo', () => {
+  it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
