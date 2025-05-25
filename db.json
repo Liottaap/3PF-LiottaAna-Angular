@@ -55,50 +55,8 @@
       "apellido": "Liotta",
       "estado": "Aprobado",
       "id": "c4c0"
-    },
-    {
-      "id": "5606",
-      "nombre": "Ana Paula",
-      "apellido": "Liotta",
-      "dni": 23124141,
-      "email": "liotta.a.p@gmail.com",
-      "curso": "TypeScript Avanzado"
-    },
-    {
-      "id": "0177",
-      "nombre": "",
-      "apellido": "",
-      "curso": "",
-      "email": "",
-      "telefono": "",
-      "cursos": []
-    },
-    {
-      "id": "189f",
-      "nombre": null,
-      "apellido": null,
-      "curso": null,
-      "email": null,
-      "telefono": null,
-      "cursos": []
-    },
-    {
-      "id": "7ca8",
-      "nombre": "",
-      "apellido": "",
-      "curso": "",
-      "email": "",
-      "telefono": "",
-      "cursos": []
-    },
-    {
-      "id": "ecd7",
-      "nombre": "liotta",
-      "apellido": "sd",
-      "dni": 123456,
-      "email": "liotta.a.p@gmail.com",
-      "curso": "React para Principiantes"
     }
+
   ],
   "cursos": [
     {
@@ -186,6 +144,15 @@
       "password": "123456",
       "role": "admin",
       "token": "fake-token-2"
+    },
+    {
+      "id": "4",
+      "nombre": "Ana",
+      "email": "liotta.a.p@gmail.com",
+      "password": "123456",
+      "role": "admin",
+      "token": "fake-token-2"
     }
   ]
+
 }

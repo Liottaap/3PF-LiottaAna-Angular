@@ -14,9 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'cursos',
-    canActivate: [adminGuard],
+
     loadChildren: () =>
       import('./modules/cursos/cursos.module').then((m) => m.CursosModule),
+  },
+  {
+    path: 'inscripcion',
+    loadChildren: () =>import('./modules/inscripcion/inscripcion.module').then(m =>m.InscripcionModule)
   },
 ];
 @NgModule({
