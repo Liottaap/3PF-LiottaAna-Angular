@@ -35,7 +35,7 @@ export class InscripcionComponent{
       const nuevoAlumno = this.form.value;
   
       this.alumnosService.createAlumno(nuevoAlumno).subscribe(() => {
-        alert('Alumno guardado con éxito 🎉');
+        alert('Alumno guardado con éxito');
         this.form.reset();
       });
     } else {

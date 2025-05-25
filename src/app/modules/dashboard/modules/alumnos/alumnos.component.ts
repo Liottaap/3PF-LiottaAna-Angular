@@ -1,20 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { AlumnosService } from './alumnos.service';
-import { AuthService } from '../../../../core/services/auth.services';
-import { User } from '../../../../core/models';
-import { Observable } from 'rxjs';
-import { CursosService } from '../cursos/cursos.service';
-import { Curso } from '../cursos/cursos.component';
-import { AlumnosList } from './components/alumnos-table/alumnos-table.component';
-
+import { Component, OnInit } from "@angular/core";
+import { AlumnosService } from "./alumnos.service";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 export interface Alumnos {
-  position: number;
+  id: number;
   nombre: string;
   apellido: string;
   estado: string;
-  cursos: []
+  curso: string;
 }
 
 @Component({
@@ -24,55 +17,35 @@ export interface Alumnos {
   styleUrls: ['./alumnos.component.scss']
 })
 export class AlumnosComponent implements OnInit {
-  cursosDisponibles: Curso[] = [];
-  isEditingId: number | null = null;
-  alumnForm: FormGroup;
-  isLoading = false
   alumnos: Alumnos[] = [];
+  isLoading = false;
+  isEditingId: number | null = null;
 
-
-  authUser$: Observable<User | null>
+  alumnForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
     private alumnosService: AlumnosService,
-    private authService :AuthService,
-    private cursosService: CursosService
+    private fb: FormBuilder
   ) {
-    this.authUser$ = this.authService.authUser$
-    
     this.alumnForm = this.fb.group({
       nombre: [''],
       apellido: [''],
+      estado: [''],
       curso: [''],
-      email: [''],
-      telefono: ['']
+      id: ['']
     });
   }
 
   ngOnInit(): void {
-    this.fetchAlumnos()
-    this.fetchCursos()
-  }
-  fetchAlumnos() {
-    this.isLoading = true;
-    this.alumnosService.getAlumns$().subscribe({
-      next: (data) => {
-        this.alumnos = data;
-      },
-      error: (err) => console.error('Error al cargar alumnos:', err),
-      complete: () => {
-        this.isLoading = false;
-      }
-    });
+    this.loadAlumnos();
   }
 
-  fetchCursos() {
-    this.cursosService.getCursos().subscribe({
-      next: (data) => {
-        this.cursosDisponibles = data;
-      },
-      error: (err) => console.error('Error al cargar cursos:', err)
+  loadAlumnos() {
+    this.isLoading = true;
+    this.alumnosService.getAlumns$().subscribe({
+      next: (data) => this.alumnos = data,
+      error: (err) => console.error('Error al cargar alumnos:', err),
+      complete: () => this.isLoading = false
     });
   }
 
@@ -80,36 +53,32 @@ export class AlumnosComponent implements OnInit {
     const formData = this.alumnForm.value;
 
     if (this.isEditingId) {
-      // Editar alumno existente
-      this.alumnosService.updateAlumno(this.isEditingId, {
-        ...formData,
-        id: this.isEditingId,
-        cursos: []
-      }).subscribe(() => {
-        this.fetchAlumnos();
+      // Modo edición
+      const updatedAlumno: Alumnos = { id: this.isEditingId, ...formData };
+      this.alumnosService.updateAlumno(this.isEditingId, updatedAlumno).subscribe(() => {
+        this.loadAlumnos();
         this.alumnForm.reset();
         this.isEditingId = null;
       });
     } else {
-      // Crear nuevo alumno
-      this.alumnosService.createAlumno({
-        ...formData,
-        cursos: []
-      } as Alumnos).subscribe(() => {
-        this.fetchAlumnos();
+      // Modo creación
+      this.alumnosService.createAlumno(formData).subscribe(() => {
+        this.loadAlumnos();
         this.alumnForm.reset();
       });
     }
   }
 
-  onDeleteAlumn(position: number) {
-    if (confirm('¿Estas seguro que quieres eliminar el Alumno?')) {
-      this.alumnos = this.alumnos.filter((alumno) => alumno.position != position);
-    }
+  onEditAlumn(alumno: Alumnos) {
+    this.isEditingId = alumno.id;
+    this.alumnForm.patchValue(alumno);
   }
 
-  onEditAlumn(alumno: AlumnosList) {
-    this.isEditingId = alumno.position;
-    this.alumnForm.patchValue(alumno);
+  onDeleteAlumn(id: number) {
+    if (confirm('¿Seguro que deseas eliminar este alumno?')) {
+      this.alumnosService.deleteAlumno(id).subscribe(() => {
+        this.loadAlumnos();
+      });
+    }
   }
 }

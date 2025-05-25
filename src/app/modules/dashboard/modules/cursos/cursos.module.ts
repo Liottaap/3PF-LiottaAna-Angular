@@ -10,7 +10,7 @@ import { AlumnosComponent } from '../alumnos/alumnos.component';
 
 
 @NgModule({
-  declarations: [CursosCardComponent],
+  declarations: [CursosCardComponent, CursosComponent],
   imports: [
     CommonModule,
     CursosRoutingModule,

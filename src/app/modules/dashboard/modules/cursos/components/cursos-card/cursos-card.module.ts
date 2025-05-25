@@ -13,7 +13,7 @@ import { CursosCardComponent } from './cursos-card.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CursosCardComponent],
   imports: [
     CommonModule,
     SharedModule,

@@ -1,18 +1,8 @@
-import {EventEmitter, Input, Output } from '@angular/core'
-
-import { Component } from '@angular/core';
-import { AuthService } from '../../../../../../core/services/auth.services';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../../../../../core/services/auth.services';
 import { User } from '../../../../../../core/models';
-
-export interface AlumnosList {
-  nombre: string;
-  position: number;
-  apellido: string;
-  estado: string;
-}
-
-
+import { Alumnos } from '../../alumnos.service';
 
 @Component({
   selector: 'app-alumnos-table',
@@ -21,26 +11,23 @@ export interface AlumnosList {
   styles: ``
 })
 export class AlumnosTableComponent {
-  displayedColumns: string[] = ['demo-position', 'demo-nombre', 'demo-apellido', 'demo-estado', "actions"];
+  // Columnas visibles en la tabla
+  displayedColumns: string[] = ['demo-id', 'demo-nombre', 'demo-apellido', 'demo-estado', 'actions'];
 
+  // Datos recibidos
+  @Input() dataSource: Alumnos[] = [];
 
-  @Input()
-  dataSource: AlumnosList[] = [];
+  // Eventos hacia el componente padre
+  @Output() deleteAlumn = new EventEmitter<number>();
+  @Output() editAlumn = new EventEmitter<Alumnos>();
 
-  @Output()
-  deleteAlumn = new EventEmitter<number>()
+  authUser$: Observable<User | null>;
 
-  @Output()
-  editAlumn = new EventEmitter<AlumnosList>()
-
-  
-  authUser$: Observable<User | null>
-
-  constructor(private authService: AuthService){
-    this.authUser$ = this.authService.authUser$
+  constructor(private authService: AuthService) {
+    this.authUser$ = this.authService.authUser$;
   }
 
-
+  // Método para asignar color según estado
   StateBgColor(estado: string): string {
     switch (estado) {
       case 'Aprobado':
@@ -50,10 +37,15 @@ export class AlumnosTableComponent {
       default:
         return '';
     }
-  } 
+  }
 
-  onEdit(alumno: AlumnosList): void {
+  // Emitir evento de edición
+  onEdit(alumno: Alumnos): void {
     this.editAlumn.emit(alumno);
-}
+  }
 
+  // Emitir evento de eliminación
+  onDelete(id: number): void {
+    this.deleteAlumn.emit(id);
+  }
 }

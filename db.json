@@ -1,11 +1,11 @@
 {
   "students": [
     {
-      "position": 1,
+      "id": "d78a",
       "nombre": "Rosario",
       "apellido": "Pérez",
-      "estado": "Aprobado",
-      "id": "d78a"
+      "estado": "Desaprobado",
+      "curso": ""
     },
     {
       "position": 2,
@@ -90,6 +90,14 @@
       "email": "",
       "telefono": "",
       "cursos": []
+    },
+    {
+      "id": "ecd7",
+      "nombre": "liotta",
+      "apellido": "sd",
+      "dni": 123456,
+      "email": "liotta.a.p@gmail.com",
+      "curso": "React para Principiantes"
     }
   ],
   "cursos": [
@@ -159,7 +167,7 @@
       "id": "1",
       "nombre": "Juan Gomez",
       "email": "juangomez@example.com",
-      "password": "123456789",
+      "password": "123456",
       "role": "admin",
       "token": "fake-token"
     },
@@ -167,8 +175,16 @@
       "id": "2",
       "nombre": "Maria Gimenez",
       "email": "mariaJ@example.com",
-      "password": "123456789",
-      "role": "Profesor",
+      "password": "123456",
+      "role": "alumno",
+      "token": "fake-token-2"
+    },
+    {
+      "id": "3",
+      "nombre": "Prueba",
+      "email": "prueba@mail.com",
+      "password": "123456",
+      "role": "admin",
       "token": "fake-token-2"
     }
   ]

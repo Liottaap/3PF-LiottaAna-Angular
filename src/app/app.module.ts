@@ -16,7 +16,6 @@ import { appReducer } from './store';
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     HttpClientModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreModule.forRoot(appReducer, {}),
