@@ -9,7 +9,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import {MatListModule} from '@angular/material/list';
-import { AlumnosModule } from "./modules/alumnos/alumnos.module";
 import { DashboardRoutingModule } from './dashboard-routing.module';
 @NgModule({
   declarations: [DashboardComponent, NavMenuComponent ],
@@ -20,7 +19,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    AlumnosModule,
+
     RouterModule,
     DashboardRoutingModule,
 

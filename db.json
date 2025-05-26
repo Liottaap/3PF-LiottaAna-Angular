@@ -1,60 +1,69 @@
 {
   "students": [
     {
-      "id": "d78a",
+      "id": 1,
       "nombre": "Rosario",
       "apellido": "Pérez",
       "estado": "Desaprobado",
-      "curso": ""
+      "curso": "",
+      "position": 1
+
     },
     {
       "position": 2,
       "nombre": "Joaquin",
       "apellido": "Rivadavia",
       "estado": "Desaprobado",
-      "id": "5d51"
+      "id": 2,
+      "curso": ""
     },
     {
       "position": 3,
       "nombre": "Pedro",
       "apellido": "Maradona",
       "estado": "Desaprobado",
-      "id": "34b1"
+      "id": 3,
+      "curso": ""
     },
     {
       "position": 4,
       "nombre": "Mateo",
       "apellido": "Ahumada",
       "estado": "Desaprobado",
-      "id": "f052"
+      "id": 4,
+      "curso": ""
     },
     {
       "position": 5,
       "nombre": "Milagros",
       "apellido": "Gil",
       "estado": "Aprobado",
-      "id": "ac11"
+      "id": 5,
+      "curso": ""
     },
     {
       "position": 6,
       "nombre": "Francisco",
       "apellido": "Sabatini",
       "estado": "Aprobado",
-      "id": "fb42"
+      "id": 6,
+      "curso": ""
     },
     {
       "position": 7,
       "nombre": "Justo",
       "apellido": "Rossomando",
       "estado": "Aprobado",
-      "id": "78f9"
+      "id": 7,
+      "curso": ""
     },
     {
       "position": 8,
       "nombre": "Ana",
       "apellido": "Liotta",
       "estado": "Aprobado",
-      "id": "c4c0"
+      "id": 8,
+      "curso": ""
     }
 
   ],

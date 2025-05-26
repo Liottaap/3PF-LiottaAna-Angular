@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlumnosComponent } from './alumnos.component';
 import { DetalleAlumnoComponent } from './pages/detalle-alumno/detalle-alumno.component';
-import { authenticationGuard } from '../../../../core/guards/authentication.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +9,7 @@ const routes: Routes = [
     component: AlumnosComponent
   },
   {
-    path: 'detalle/:position',
+    path: 'detalle/:id',
     component: DetalleAlumnoComponent
   }
 ];

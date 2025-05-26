@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../../core/services/auth.services';
 import { User } from '../../../../../../core/models';
 import { Alumnos } from '../../alumnos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alumnos-table',
@@ -23,7 +24,7 @@ export class AlumnosTableComponent {
 
   authUser$: Observable<User | null>;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.authUser$ = this.authService.authUser$;
   }
 
@@ -47,5 +48,9 @@ export class AlumnosTableComponent {
   // Emitir evento de eliminación
   onDelete(id: number): void {
     this.deleteAlumn.emit(id);
+  }
+  test(id: number): void {
+    console.log('Navegando a detalle', id);
+    this.router.navigate(['/dashboard/alumnos/detalle', id]);
   }
 }

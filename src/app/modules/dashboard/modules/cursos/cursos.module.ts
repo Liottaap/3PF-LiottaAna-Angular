@@ -6,17 +6,20 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { CursosCardComponent } from './components/cursos-card/cursos-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { AlumnosComponent } from '../alumnos/alumnos.component';
+import { CursosCardModule } from './components/cursos-card/cursos-card.module';
 
 
 
 @NgModule({
-  declarations: [CursosCardComponent, CursosComponent],
+  declarations: [CursosComponent],
   imports: [
     CommonModule,
     CursosRoutingModule,
     SharedModule,
     MatCardModule,
-    MatCardModule
+    CursosCardModule,
+    MatCardModule,
+     
   ],
 })
 export class CursosModule { }

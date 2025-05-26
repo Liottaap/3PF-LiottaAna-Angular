@@ -11,15 +11,15 @@ import { Alumnos } from '../../alumnos.component';
   styleUrl: './detalle-alumno.component.scss'
 })
 export class DetalleAlumnoComponent {
-  Alumn$: Observable<Alumnos | null>
-
+   Alumn$: Observable<Alumnos | null>
+ 
   constructor(private activatedRoute: ActivatedRoute, private alumnosService: AlumnosService){
-    console.log(this.activatedRoute);
-    const alumnPosition = Number(this.activatedRoute.snapshot.params['position']);
+     console.log(this.activatedRoute);
+    const alumnPosition = Number(this.activatedRoute.snapshot.params['id']);
     console.log('Tipo de alumnPosition:', typeof alumnPosition);
 
     this.Alumn$ = this.alumnosService.getAlumnByPosition(alumnPosition)
     console.log('Posición del alumno: ', alumnPosition);
-    
+     
   }
 }

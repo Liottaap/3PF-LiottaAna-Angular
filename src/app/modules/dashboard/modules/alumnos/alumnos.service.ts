@@ -24,8 +24,8 @@ export class AlumnosService {
   }
 
   // Obtener alumno por ID
-  getAlumnByPosition(position: number): Observable<Alumnos> {
-    return this.http.get<Alumnos>(`${this.baseUrl}/${position}`);
+  getAlumnByPosition(id: number): Observable<Alumnos> {
+    return this.http.get<Alumnos>(`${this.baseUrl}/${id}`);
   }
 
   // Crear alumno

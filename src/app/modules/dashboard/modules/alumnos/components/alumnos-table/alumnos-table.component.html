@@ -30,7 +30,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Acciones </th>
     <td mat-cell *matCellDef="let element">
-      <button [routerLink]="[element.id]" mat-icon-button>
+      <button  (click)="test(element.id)" mat-icon-button>
         <mat-icon>visibility</mat-icon>
       </button>
       <button [disabled]="(authUser$|async)?.role != 'admin'" (click)="onEdit(element)" mat-icon-button>
