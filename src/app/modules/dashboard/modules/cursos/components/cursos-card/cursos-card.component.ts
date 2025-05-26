@@ -6,6 +6,8 @@ import { map, Observable } from 'rxjs';
 import { selectCounterState } from '../../../../../../store/counter/counter.selector';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CursosService } from '../../cursos.service';
+import { AuthService } from '../../../../../../core/services/auth.services';
+import { User } from '../../../../../../core/models';
 
 @Component({
   selector: 'app-cursos-card',
@@ -21,14 +23,19 @@ export class CursosCardComponent implements OnInit {
   count$ : Observable<number>;
   editMode = false;
   cursoForm!: FormGroup;
+  authUser$: Observable<User | null>;
 
-  constructor(private store: Store, private fb: FormBuilder) {
+   
+  constructor(private store: Store, private fb: FormBuilder,private authService: AuthService, private cursoService: CursosService) {
+
+    this.authUser$ = this.authService.authUser$;
     this.count$ = this.store
       .select(selectCounterState)
       .pipe(map(state => state.count));
   }
 
   ngOnInit() {
+
     this.cursoForm = this.fb.group({
       nombre: [this.curso.nombre, Validators.required],
       duracion: [this.curso.duracion, Validators.required],
@@ -65,7 +72,9 @@ export class CursosCardComponent implements OnInit {
   }
 
   borrarCurso() {
-    // Emitir el id hacia el padre para que borre el curso
-    this.cursoBorrado.emit(this.curso.id);
+    console.log('curso borrado',this.curso.id)
+    const cursoDel= { ...this.curso, ...this.cursoForm.value };
+    this.cursoBorrado.emit(this.curso.id)
+     
   }
 }

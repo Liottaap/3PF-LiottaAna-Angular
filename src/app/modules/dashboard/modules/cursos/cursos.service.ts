@@ -14,7 +14,12 @@ export class CursosService {
     return this.http.get<Curso[]>(this.baseUrl)
   }
   
-  updateCurso(id:number, curso:Curso[]){
+  updateCurso(id:number, curso?:Curso[]){
     return this.http.get<Curso[]>(`${this.baseUrl}/`)
   }
+  deleteCurso(id:number):Observable<any>{
+    console.log(id)
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
 }

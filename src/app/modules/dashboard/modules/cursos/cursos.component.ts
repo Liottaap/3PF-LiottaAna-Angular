@@ -28,5 +28,23 @@ ngOnInit():void {
     this.cursos = data
   })
 }
+ultimoCursoEditado: Curso | null = null;
+onCursoEditado(cursoActualizado: Curso) {
+  this.ultimoCursoEditado = cursoActualizado;
+
+  // Aquí puedes actualizar el arreglo de cursos para reflejar el cambio
+  const index = this.cursos.findIndex(c => c.id === cursoActualizado.id);
+  if (index !== -1) {
+    this.cursos[index] = cursoActualizado;
+  }
+}
+
+onCursoEliminado(id: number) {
+  const index = this.cursos.findIndex(c => c.id === id);
+  if (index !== -1) {
+    this.cursos.splice(index, 1);
+  }
+}
+
 
 }

@@ -1,20 +1,19 @@
 {
   "students": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Rosario",
       "apellido": "Pérez",
       "estado": "Desaprobado",
       "curso": "",
       "position": 1
-
     },
     {
       "position": 2,
       "nombre": "Joaquin",
       "apellido": "Rivadavia",
       "estado": "Desaprobado",
-      "id": 2,
+      "id": "2",
       "curso": ""
     },
     {
@@ -22,7 +21,7 @@
       "nombre": "Pedro",
       "apellido": "Maradona",
       "estado": "Desaprobado",
-      "id": 3,
+      "id": "3",
       "curso": ""
     },
     {
@@ -30,7 +29,7 @@
       "nombre": "Mateo",
       "apellido": "Ahumada",
       "estado": "Desaprobado",
-      "id": 4,
+      "id": "4",
       "curso": ""
     },
     {
@@ -38,7 +37,7 @@
       "nombre": "Milagros",
       "apellido": "Gil",
       "estado": "Aprobado",
-      "id": 5,
+      "id": "5",
       "curso": ""
     },
     {
@@ -46,7 +45,7 @@
       "nombre": "Francisco",
       "apellido": "Sabatini",
       "estado": "Aprobado",
-      "id": 6,
+      "id": "6",
       "curso": ""
     },
     {
@@ -54,7 +53,7 @@
       "nombre": "Justo",
       "apellido": "Rossomando",
       "estado": "Aprobado",
-      "id": 7,
+      "id": "7",
       "curso": ""
     },
     {
@@ -62,10 +61,16 @@
       "nombre": "Ana",
       "apellido": "Liotta",
       "estado": "Aprobado",
-      "id": 8,
+      "id": "8",
       "curso": ""
+    },
+    {
+      "id": "66a9",
+      "nombre": "maico",
+      "apellido": "diaz",
+      "estado": "Ausente",
+      "curso": "JavaScript desde Cero"
     }
-
   ],
   "cursos": [
     {
@@ -163,5 +168,4 @@
       "token": "fake-token-2"
     }
   ]
-
 }
