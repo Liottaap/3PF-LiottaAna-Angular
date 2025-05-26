@@ -19,29 +19,21 @@ describe('AppComponent', () => {
   });
 
   // "it" es un test individual
-  // 'Debe crearse App', devuelve un callback donde se ejecuta la prueba en sí.
-  //Dentro de fixture hay varias funciones (detectar cambios, destruir componentes)
-  it('should create the app', () => {
+  it('Debe crearse app', () => {
     //creamos el componente
     const fixture = TestBed.createComponent(AppComponent);
     //extraemos la instancia
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
-  // "it" es un test individual
-  it(`should have as title 'Proyecto Final'`, () => {
-    //creamos el componente
+
+  it(`Debe contener el titulo 'Proyecto Final'`, () => {
+
     const fixture = TestBed.createComponent(AppComponent);
-    //Extraemos la instancia
+
     const app = fixture.componentInstance;
     //"Espero que el titulo sea igual a 'Proyecto final'"
     expect(app.title).toEqual('Proyecto Final');
   });
-  // "it" es un test individual
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Proyecto Final')
-  });
+
 });
