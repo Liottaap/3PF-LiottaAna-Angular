@@ -65,70 +65,81 @@
       "curso": ""
     },
     {
-      "id": "66a9",
-      "nombre": "maico",
-      "apellido": "diaz",
-      "estado": "Ausente",
-      "curso": "JavaScript desde Cero"
+      "id": "83b6",
+      "nombre": "Ana Paula",
+      "apellido": "Liotta",
+      "dni": 12345,
+      "email": "liotta.a.p@gmail.com",
+      "curso": "TypeScript Avanzado"
     }
   ],
   "cursos": [
     {
       "id": "1",
+      "userId": 1,
       "nombre": "Angular Básico",
       "descripcion": "Introducción a Angular y sus componentes principales.",
       "duracion": "6 semanas"
     },
     {
       "id": "2",
+      "userId": 2,
       "nombre": "TypeScript Avanzado",
       "descripcion": "Profundizá en TypeScript, interfaces, clases y tipos avanzados.",
       "duracion": "4 semanas"
     },
     {
       "id": "3",
+      "userId": 4,
       "nombre": "JavaScript desde Cero",
       "descripcion": "Aprendé los fundamentos de JavaScript moderno paso a paso.",
       "duracion": "5 semanas"
     },
     {
       "id": "4",
+      "userId": 3,
       "nombre": "HTML y CSS Profesional",
       "descripcion": "Dominá la maquetación web con Flexbox, Grid y diseño responsivo.",
       "duracion": "3 semanas"
     },
     {
       "id": "5",
+      "userId": 1,
       "nombre": "React para Principiantes",
       "descripcion": "Construí interfaces reactivas con React, JSX y hooks.",
       "duracion": "6 semanas"
     },
     {
       "id": "6",
+      "userId": 2,
       "nombre": "Node.js y Express",
       "descripcion": "Creá servidores y APIs REST con Node.js y Express.",
       "duracion": "4 semanas"
     },
     {
       "id": "7",
+      "userId": 3,
       "nombre": "Bases de Datos con MongoDB",
       "descripcion": "Aprendé a modelar datos y manejar una base NoSQL con MongoDB.",
       "duracion": "3 semanas"
     },
     {
       "id": "8",
+      "userId": 4,
       "nombre": "Git y GitHub",
       "descripcion": "Gestioná el control de versiones y colaborá en proyectos usando Git.",
       "duracion": "2 semanas"
     },
     {
       "id": "9",
+      "userId": "1",
       "nombre": "Diseño UX/UI",
       "descripcion": "Principios de diseño centrado en el usuario y prototipado con Figma.",
       "duracion": "5 semanas"
     },
     {
       "id": "10",
+      "userId": 2,
       "nombre": "Testing en Angular",
       "descripcion": "Escribí pruebas unitarias y de integración con Jasmine y Karma.",
       "duracion": "3 semanas"
@@ -157,7 +168,7 @@
       "email": "prueba@mail.com",
       "password": "123456",
       "role": "admin",
-      "token": "fake-token-2"
+      "token": "fake-token-3"
     },
     {
       "id": "4",
@@ -165,7 +176,7 @@
       "email": "liotta.a.p@gmail.com",
       "password": "123456",
       "role": "admin",
-      "token": "fake-token-2"
+      "token": "fake-token-4"
     }
   ]
 }

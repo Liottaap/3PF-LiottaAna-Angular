@@ -1,50 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable, forkJoin, map } from 'rxjs';
+import { cursosActions } from './store/cursos.actions';
+import { Curso } from './models/curso.model';
+import { selectCursosList, selectCursosLoading, selectCursosError } from './store/cursos.selector';
+import { Alumnos, AlumnosService } from '../alumnos/alumnos.service';
 import { CommonModule } from '@angular/common';
-import { CursosService } from './cursos.service';
 
-
-
-export interface Curso {
-  id: number;
-  nombre: string;
-  descripcion: string;
-  duracion: string
-}
 
 @Component({
   selector: 'app-cursos',
-  standalone: false,
+  standalone: true, // <-- importante
+  imports: [CommonModule], // 👈 FALTA ACA
   templateUrl: './cursos.component.html',
-  styleUrls: ['./cursos.component.scss'],
+  styleUrls: ['./cursos.component.scss']
 })
-export class CursosComponent {
+export class CursosComponent implements OnInit {
+  cursos$: Observable<Curso[]>;
+  loading$: Observable<boolean>;
+  error$: Observable<string | null>;
 
-  cursos: Curso[] = [];
+  alumnosPorCurso: { [nombreCurso: string]: Alumnos[] } = {};
 
-  constructor(private cursosService: CursosService){}
-
-ngOnInit():void {
-  this.cursosService.getCursos().subscribe((data) =>{
-    this.cursos = data
-  })
-}
-ultimoCursoEditado: Curso | null = null;
-onCursoEditado(cursoActualizado: Curso) {
-  this.ultimoCursoEditado = cursoActualizado;
-
-  // Aquí puedes actualizar el arreglo de cursos para reflejar el cambio
-  const index = this.cursos.findIndex(c => c.id === cursoActualizado.id);
-  if (index !== -1) {
-    this.cursos[index] = cursoActualizado;
+  constructor(private store: Store, private alumnosService: AlumnosService) {
+    this.cursos$ = this.store.select(selectCursosList);
+    this.loading$ = this.store.select(selectCursosLoading);
+    this.error$ = this.store.select(selectCursosError);
   }
-}
 
-onCursoEliminado(id: number) {
-  const index = this.cursos.findIndex(c => c.id === id);
-  if (index !== -1) {
-    this.cursos.splice(index, 1);
+  ngOnInit(): void {
+    this.store.dispatch(cursosActions.loadCourses());
+
+    // Cargar todos los alumnos y organizarlos por curso
+    this.alumnosService.getAlumns$().subscribe((alumnos) => {
+      this.cursos$.subscribe((cursos) => {
+        cursos.forEach((curso) => {
+          this.alumnosPorCurso[curso.nombre] = alumnos.filter(a => a.curso === curso.nombre);
+        });
+      });
+    });
   }
-}
 
-
+  desuscribirAlumno(id: number, cursoNombre: string) {
+    this.alumnosService.deleteAlumno(id).subscribe(() => {
+      this.alumnosPorCurso[cursoNombre] = this.alumnosPorCurso[cursoNombre].filter(a => a.id !== id);
+    });
+  }
 }

@@ -3,4 +3,5 @@ export interface Curso {
     nombre: string;
     descripcion: string;
     duracion: string;
+    cursoId: string;
   }

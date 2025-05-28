@@ -1,13 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Curso } from '../../cursos.component';
-import { decrement, increment } from '../../../../../../store/counter/counter.action';
 import { Store } from '@ngrx/store';
-import { map, Observable } from 'rxjs';
-import { selectCounterState } from '../../../../../../store/counter/counter.selector';
+import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CursosService } from '../../cursos.service';
 import { AuthService } from '../../../../../../core/services/auth.services';
 import { User } from '../../../../../../core/models';
+import { Curso } from '../../models/curso.model';
 
 @Component({
   selector: 'app-cursos-card',
@@ -20,22 +18,20 @@ export class CursosCardComponent implements OnInit {
   @Output() cursoEditado = new EventEmitter<Curso>();
   @Output() cursoBorrado = new EventEmitter<number>();
 
-  count$ : Observable<number>;
   editMode = false;
   cursoForm!: FormGroup;
   authUser$: Observable<User | null>;
 
-   
-  constructor(private store: Store, private fb: FormBuilder,private authService: AuthService, private cursoService: CursosService) {
-
+  constructor(
+    private store: Store,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private cursoService: CursosService
+  ) {
     this.authUser$ = this.authService.authUser$;
-    this.count$ = this.store
-      .select(selectCounterState)
-      .pipe(map(state => state.count));
   }
 
-  ngOnInit() {
-
+  ngOnInit(): void {
     this.cursoForm = this.fb.group({
       nombre: [this.curso.nombre, Validators.required],
       duracion: [this.curso.duracion, Validators.required],
@@ -43,15 +39,7 @@ export class CursosCardComponent implements OnInit {
     });
   }
 
-  incrementarContador() {
-    this.store.dispatch(increment());
-  }
-
-  decrementarContador() {
-    this.store.dispatch(decrement());
-  }
-
-  toggleEdit() {
+/*   toggleEdit() {
     this.editMode = !this.editMode;
     if (this.editMode) {
       this.cursoForm.patchValue({
@@ -65,16 +53,13 @@ export class CursosCardComponent implements OnInit {
   guardarCambios() {
     if (this.cursoForm.valid) {
       const cursoActualizado = { ...this.curso, ...this.cursoForm.value };
-      // Emitir hacia el padre o manejar la actualización con un servicio
       this.cursoEditado.emit(cursoActualizado);
       this.editMode = false;
     }
   }
 
   borrarCurso() {
-    console.log('curso borrado',this.curso.id)
-    const cursoDel= { ...this.curso, ...this.cursoForm.value };
-    this.cursoBorrado.emit(this.curso.id)
-     
-  }
+    console.log('Curso borrado:', this.curso.id);
+    this.cursoBorrado.emit(this.curso.id);
+  } */
 }

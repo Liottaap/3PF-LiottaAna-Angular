@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Curso } from '../cursos/cursos.component';
 import { CursosService } from '../cursos/cursos.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AlumnosService } from '../alumnos/alumnos.service';
+import { Curso } from '../cursos/models/curso.model';
 
 @Component({
   selector: 'app-inscripcion',

@@ -3,23 +3,26 @@ import { CommonModule } from '@angular/common';
 import { CursosComponent } from './cursos.component';
 import { CursosRoutingModule } from './cursos-routing.module';
 import { SharedModule } from '../../../../shared/shared.module';
-import { CursosCardComponent } from './components/cursos-card/cursos-card.component';
 import { MatCardModule } from '@angular/material/card';
-import { AlumnosComponent } from '../alumnos/alumnos.component';
 import { CursosCardModule } from './components/cursos-card/cursos-card.module';
+import { StoreModule } from '@ngrx/store';
+import { cursosFeature } from './store/cursos.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CursosEffects } from './store/cursos.effects';
 
 
 
 @NgModule({
-  declarations: [CursosComponent],
+  declarations: [],
   imports: [
     CommonModule,
     CursosRoutingModule,
     SharedModule,
-    MatCardModule,
     CursosCardModule,
     MatCardModule,
-     
+    StoreModule.forFeature(cursosFeature),
+    EffectsModule.forFeature([CursosEffects]),
+    CursosComponent
   ],
 })
 export class CursosModule { }
