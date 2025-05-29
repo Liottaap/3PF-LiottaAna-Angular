@@ -19,7 +19,7 @@ export class AlumnosTableComponent {
   @Input() dataSource: Alumnos[] = [];
 
   // Eventos hacia el componente padre
-  @Output() deleteAlumn = new EventEmitter<number>();
+  @Output() deleteAlumn = new EventEmitter<string>();
   @Output() editAlumn = new EventEmitter<Alumnos>();
 
   authUser$: Observable<User | null>;
@@ -46,10 +46,10 @@ export class AlumnosTableComponent {
   }
 
   // Emitir evento de eliminación
-  onDelete(id: number): void {
+  onDelete(id: string): void {
     this.deleteAlumn.emit(id);
   }
-  test(id: number): void {
+  test(id: string): void {
     console.log('Navegando a detalle', id);
     this.router.navigate(['/dashboard/alumnos/detalle', id]);
   }

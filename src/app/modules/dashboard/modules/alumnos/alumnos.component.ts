@@ -3,7 +3,7 @@ import { AlumnosService } from "./alumnos.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 export interface Alumnos {
-  id: number;
+  id: string;
   nombre: string;
   apellido: string;
   estado: string;
@@ -19,7 +19,7 @@ export interface Alumnos {
 export class AlumnosComponent implements OnInit {
   alumnos: Alumnos[] = [];
   isLoading = false;
-  isEditingId: number | null = null;
+  isEditingId: string | null = null;
 
   alumnForm: FormGroup;
 
@@ -62,7 +62,8 @@ export class AlumnosComponent implements OnInit {
       });
     } else {
       // Modo creación
-      this.alumnosService.createAlumno(formData).subscribe(() => {
+      const {id, ...newAlumnoData} = formData;
+      this.alumnosService.createAlumno(newAlumnoData).subscribe(() => {
         this.loadAlumnos();
         this.alumnForm.reset();
       });
@@ -74,7 +75,12 @@ export class AlumnosComponent implements OnInit {
     this.alumnForm.patchValue(alumno);
   }
 
-  onDeleteAlumn(id: number) {
+  onDeleteAlumn(id: string) {
+    if (!id) {
+      alert('Este alumno no tiene un ID válido y no puede eliminarse.');
+      return;
+    }
+  
     if (confirm('¿Seguro que deseas eliminar este alumno?')) {
       this.alumnosService.deleteAlumno(id).subscribe(() => {
         this.loadAlumnos();

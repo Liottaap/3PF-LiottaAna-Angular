@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Alumnos {
-  id: number;
+  id: string;
   nombre: string;
   apellido: string;
   estado: string;
@@ -24,7 +24,7 @@ export class AlumnosService {
   }
 
   // Obtener alumno por ID
-  getAlumnByPosition(id: number): Observable<Alumnos> {
+  getAlumnByPosition(id: string): Observable<Alumnos> {
     return this.http.get<Alumnos>(`${this.baseUrl}/${id}`);
   }
 
@@ -34,12 +34,12 @@ export class AlumnosService {
   }
 
   // Actualizar alumno
-  updateAlumno(id: number, alumno: Alumnos): Observable<Alumnos> {
+  updateAlumno(id: string, alumno: Alumnos): Observable<Alumnos> {
     return this.http.put<Alumnos>(`${this.baseUrl}/${id}`, alumno);
   }
 
   // Eliminar alumno
-  deleteAlumno(id: number): Observable<any> {
+  deleteAlumno(id: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }

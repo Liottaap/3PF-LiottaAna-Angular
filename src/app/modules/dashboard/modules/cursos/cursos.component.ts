@@ -41,7 +41,7 @@ export class CursosComponent implements OnInit {
     });
   }
 
-  desuscribirAlumno(id: number, cursoNombre: string) {
+  desuscribirAlumno(id: string, cursoNombre: string) {
     this.alumnosService.deleteAlumno(id).subscribe(() => {
       this.alumnosPorCurso[cursoNombre] = this.alumnosPorCurso[cursoNombre].filter(a => a.id !== id);
     });
